@@ -55,11 +55,13 @@ function printDataName(data) {
 
 
 function printDataId(data) {
-  console.log(data);
+  let divCard = document.createElement("div");
+  divCard.classList.add("card");
+  cards.appendChild(divCard);
   let divImage = document.createElement("div");
-  cards.appendChild(divImage);
+  divCard.appendChild(divImage);
   let divInfo = document.createElement("div");
-  cards.appendChild(divInfo);
+  divCard.appendChild(divInfo);
   let heroeImg = document.createElement("img");
   heroeImg.src = data.image.url;
   divImage.appendChild(heroeImg);
