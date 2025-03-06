@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Asincronismo 2 en grupo</title>
+</head>
+<body>
+  <div class="conteiner-ppal">
+    <h1>App cambio de divisas</h1>
+    <div class="divFlex">
+      <div id="all-badges">
+        <button id="btn-seeAll">Ver Divisas Disponibles</button>
+      </div>
+      <div>
+        <div>
+          <h2>Seleccione la moneda que quiere vender</h2>
+          <div>
+            <input type="text" id="user-money" placeholder="Mi moneda">
+            <!-- <button id="btn-badge">Convertir</button> -->
+            <input type="text" id="quantity" placeholder="Cantidad">
+          </div>
+        </div>
+        <div>
+          <h2>Seleccione la moneda que quiere comprar</h2>
+          <div>
+            <input type="text" id="destino" placeholder="Moneda a comprar">
+            <!-- <button id="btn-badge">Convertir</button> -->
+            <button id="btn-calculo">Calcular</button>
+            <!-- <button id="btn-badge">Convertir</button> -->
+          </div>
+          <div id="resultado"></div>
+        </div>
+      </div>
+      <!-- <select id="selector"></select> -->
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
