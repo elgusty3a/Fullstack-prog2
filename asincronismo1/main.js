@@ -2,8 +2,8 @@
 
 let conteinerPpal = document.getElementById('conteinerPpal');
 let cards = document.getElementById('cards');
-// let divImage = document.getElementById('divImage');
-// let divInfo = document.getElementById('divInfo');
+let divImage = document.getElementById('divImage');
+let divInfo = document.getElementById('divInfo');
 
 let inputName = document.getElementById('nameCharacter');
 let searchByName = document.getElementById('btnName');
@@ -11,19 +11,39 @@ let inputId = document.getElementById('idCharacter');
 let searchById = document.getElementById('btnId');
 
 searchByName.addEventListener("click", searchNameAPI);
-searchById.addEventListener("click", searchIdApi);
+searchById.addEventListener("click", getId);
 
-async function searchIdApi() {
+let arrayCharacter = [];
+getAll();
+
+function getAll() {
+  for (let i = 1; i <= 731; i++) {
+    searchIdApi(i).then(data => {
+      arrayCharacter.push(data);
+    });
+  }
+}
+// console.log(arrayCharacter[0].name); //TODO vaya a saber Dios por que no me muestra nada!!!
+
+console.log(arrayCharacter);
+
+function getId() {
+  let id = inputId.value;
+  searchIdApi(id).then(data => {
+    printDataId(data);
+  });
+  inputId.value = "";
+}
+
+async function searchIdApi(id) {
   try {
-    let id = inputId.value;
     // console.log(id);
     if (id !== ""){
       let idToSearch = await fetch(`https://www.superheroapi.com/api.php/4cf50017dbf46f5b4ae8e9c41a89bded/${id}`);
+      // console.log(idToSearch);
       let data = await idToSearch.json();
       // console.log(data);
-      inputId.value = "";
-      printDataId(data);
-      // return data;
+      return data;
     }
   } catch (error) {
     console.log("Error:" + error);
@@ -40,7 +60,6 @@ async function searchNameAPI() {
       console.log(data);
       inputName.value = "";
       printDataName(data);
-      // return data;
     }
   } catch (error) {
     console.log("Error:" + error);
@@ -81,8 +100,5 @@ function printDataId(data) {
     heroePowerstats.appendChild(item);
   }
 }
-
-
-
 
 
