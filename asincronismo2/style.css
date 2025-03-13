@@ -11,3 +11,20 @@
 .verMenos{
   display: none;
 }
+
+#resultado{
+  display: flex;
+  justify-content: center;
+}
+
+#resultado p{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bolder;
+  max-width: max-content;
+  margin: 2px;
+  padding: 5px;
+  border: 1px double goldenrod;
+  border-radius: 5px;
+  color: green;
+}
