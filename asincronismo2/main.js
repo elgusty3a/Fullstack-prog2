@@ -1,4 +1,5 @@
 let divAllDivisas = document.getElementById('all-badges');
+let seeAllDivisas = document.getElementById('div-all-badges');
 let btnAll = document.getElementById('btn-seeAll');
 
 let userMoney = document.getElementById('user-money');
@@ -9,7 +10,7 @@ let divResultado = document.getElementById('resultado');
 let selectMy = document.getElementById('monedaMy');
 let selectBaseMoney = document.getElementById('monedaBaseSelect2');
 
-btnAll.addEventListener("click", printBadges);
+btnAll.addEventListener("click", ()=>seeAllDivisas.classList.toggle("verMenos"));
 btnCalc.addEventListener("click", calculo);
 
 printSelect();
@@ -46,27 +47,6 @@ async function pedirAPI(destino,miMoneda,cantidad) {
   }
 }
 
-async function printBadges() {
-  try {
-    let allMoney = await fetch('https://api.frankfurter.dev/v1/currencies');
-    let dataJson = await allMoney.json();
-    console.log(dataJson);
-    printBadgesOl(dataJson);
-  } catch (error) {
-    console.log("El error es: " + error);
-  }
-}
-
-function printBadgesOl(data) {
-  let orderList = document.createElement("ol");
-  divAllDivisas.appendChild(orderList);
-  for (let badge in data) {
-    let item = document.createElement("li");
-    item.textContent = `${badge}: ${data[badge]}`;
-    orderList.appendChild(item);
-  }
-}
-
 //------------------nuevo: selects------------------//
 
 async function printSelect() {
@@ -76,6 +56,7 @@ async function printSelect() {
     console.log(dataJson);
     crearSelects1(dataJson);
     crearSelects2(dataJson);
+    printBadgesOl(dataJson);
   } catch (error) {
     console.log("El error es: " + error);
   }
@@ -96,5 +77,13 @@ function crearSelects2(data) {
     selectMy.appendChild(opcion);
     // selectBaseMoney.appendChild(opcion);
   }
-
+}
+function printBadgesOl(data) {
+  let orderList = document.createElement("ol");
+  seeAllDivisas.appendChild(orderList);
+  for (let badge in data) {
+    let item = document.createElement("li");
+    item.textContent = `${badge}: ${data[badge]}`;
+    orderList.appendChild(item);
+  }
 }

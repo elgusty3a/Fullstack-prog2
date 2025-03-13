@@ -1,4 +1,13 @@
 .divFlex{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.title-ppal{
+  text-align: center;
+}
+
+.verMenos{
+  display: none;
 }
