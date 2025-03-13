@@ -78,8 +78,10 @@ function printDataId(data) {
   divCard.classList.add("card");
   cards.appendChild(divCard);
   let divImage = document.createElement("div");
+  divImage.classList.add("divImage");
   divCard.appendChild(divImage);
   let divInfo = document.createElement("div");
+  divInfo.classList.add("divInfo");
   divCard.appendChild(divInfo);
   let heroeImg = document.createElement("img");
   heroeImg.src = data.image.url;
