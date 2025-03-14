@@ -10,7 +10,7 @@ import { Auto } from "./Auto";
 let logan = new Auto("Renault","Logan",2017);
 let corolla = new Auto("Toyota","Corolla",2020);
 
-logan.acelerar(logan.getModelo());
+logan.acelerar();
 
-corolla.frenar(corolla.getModelo());
+corolla.frenar();
 

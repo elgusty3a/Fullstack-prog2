@@ -10,18 +10,12 @@ export class Auto {
     this.anio = anio;
   }
 
-  acelerar(coche:string){
-    console.log(`Piso el acelerador del ${coche}`);
+  acelerar(){
+    console.log(`Piso el acelerador del ${this.modelo}`);
   }
 
-  frenar(coche:string){
-    console.log(`Piso el freno del ${coche}`);
+  frenar(){
+    console.log(`Piso el freno del ${this.modelo}`);
   }
-
-  
-  public getModelo() : string {
-    return this.modelo;
-  }
-
 
 }
