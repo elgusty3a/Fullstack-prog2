@@ -16,11 +16,38 @@ var Celular = /** @class */ (function () {
     Celular.prototype.setMarca = function (pMarca) {
         this.marca = pMarca;
     };
+    Celular.prototype.getModelo = function () {
+        return this.modelo;
+    };
+    Celular.prototype.setModelo = function (pModelo) {
+        this.modelo = pModelo;
+    };
+    Celular.prototype.getSistem = function () {
+        return this.sistemaOperativo;
+    };
+    Celular.prototype.setSistem = function (pSistem) {
+        this.sistemaOperativo = pSistem;
+    };
+    Celular.prototype.getMemoriaRam = function () {
+        return this.memoriaRam;
+    };
+    Celular.prototype.setMemoriaRam = function (pRam) {
+        this.memoriaRam = pRam;
+    };
+    Celular.prototype.getAlmacenamiento = function () {
+        return this.memoriaRam;
+    };
+    Celular.prototype.setAlmacenamiento = function (pAlmacenamiento) {
+        this.almacenamientoInterno = pAlmacenamiento;
+    };
+    Celular.prototype.getEstado = function () {
+        return this.estadoEncendido;
+    };
     Celular.prototype.encenderApagar = function (pEstado) {
-        if (pEstado != true) {
+        if (pEstado == true && this.estadoEncendido == false) {
             this.estadoEncendido = true;
         }
-        else {
+        else if (pEstado != true && this.estadoEncendido == true) {
             this.estadoEncendido = false;
         }
     };

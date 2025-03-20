@@ -56,10 +56,12 @@ export class Celular {
   }
 
   public encenderApagar(pEstado:boolean){
-    if (pEstado != true) {
-      this.estadoEncendido = true;
-    } else {
-      this.estadoEncendido = false;
+    if (pEstado == true){
+      if (this.estadoEncendido == false) {
+        this.estadoEncendido = true;
+      }else{
+        this.estadoEncendido = false;
+      }
     }
   }
 
