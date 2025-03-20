@@ -19,9 +19,40 @@ export class Celular {
   public getMarca(){
     return this.marca;
   }
-
   public setMarca(pMarca:string){
     this.marca = pMarca;
+  }
+
+  public getModelo(){
+    return this.modelo;
+  }
+  public setModelo(pModelo:string){
+    this.modelo = pModelo;
+  }
+
+  public getSistem(){
+    return this.sistemaOperativo;
+  }
+  public setSistem(pSistem:string){
+    this.sistemaOperativo = pSistem;
+  }
+
+  public getMemoriaRam(){
+    return this.memoriaRam;
+  }
+  public setMemoriaRam(pRam:number){
+    this.memoriaRam = pRam;
+  }
+
+  public getAlmacenamiento(){
+    return this.memoriaRam;
+  }
+  public setAlmacenamiento(pAlmacenamiento:number){
+    this.almacenamientoInterno = pAlmacenamiento;
+  }
+
+  public getEstado(){
+    return this.estadoEncendido;
   }
 
   public encenderApagar(pEstado:boolean){

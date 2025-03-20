@@ -21,6 +21,6 @@ var iPhoneX6 = new Celular_1.Celular("IPhone", "X6", "IOS", 8, undefined);
 // motorolaG32.setMarca("pepito");
 // console.log(motorolaG32.getMarca());
 // motorolaG32.mostrarInfo();
-tcl505.mostrarInfo;
+tcl505.mostrarInfo();
 tcl505.encenderApagar(true);
-tcl505.mostrarInfo;
+tcl505.mostrarInfo();
