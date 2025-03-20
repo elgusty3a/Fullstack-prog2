@@ -55,6 +55,7 @@ export class Celular {
     return this.estadoEncendido;
   }
 
+  // Este metodo lo pense que si se ingresa true cambia el estado de encedido y apagado, nada mas, si se ingresa false es como si no apretara el boton del celular
   public encenderApagar(pEstado:boolean){
     if (pEstado == true){
       if (this.estadoEncendido == false) {
@@ -64,6 +65,15 @@ export class Celular {
       }
     }
   }
+
+  // TODO ver si este metodo es mejor que el anterior
+  // public encenderApagar(pEstado:boolean){
+  //   if (pEstado != true) {
+  //     this.estadoEncendido = true;
+  //   } else {
+  //     this.estadoEncendido = false;
+  // }
+
 
   public mostrarInfo(){
     console.log(`
