@@ -12,8 +12,36 @@ export class Alumno {
     this.nota = pNota;
   }
 
+  public getApellido() {
+    return this.apellido;
+  }
+
+  public setApellido(pApellido:string) {
+    this.apellido = pApellido;
+  }
+
   public getNombre() {
     return this.nombre;
+  }
+
+  public setNombre(pNombre:string) {
+    this.nombre = pNombre;
+  }
+
+  public getGrado() {
+    return this.grado;
+  }
+
+  public setGrado(pGrado:string) {
+    this.grado = pGrado;
+  }
+
+  public getNota() {
+    return this.nota;
+  }
+
+  public setNota(pNota:number) {
+    this.nota = pNota;
   }
 
   public aprobo():boolean {

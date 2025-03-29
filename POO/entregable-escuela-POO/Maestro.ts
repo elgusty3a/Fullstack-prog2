@@ -7,11 +7,36 @@ export class Maestro {
   private grado:string;
   private alumnos:Alumno[];
 
-  constructor(pApellido:string,pNombre:string,pGrado:string) {
+  constructor(pApellido:string,pNombre:string,pGrado:string,pAlumnos:Alumno[]) {
     this.apellido = pApellido;
     this.nombre = pNombre;
     this.grado = pGrado;
-    this.alumnos = new Array();
+    this.alumnos = pAlumnos;
+    // this.alumnos = new Array(); //TODO ver si se puede iniciar asi un arreglo vacio
+  }
+
+  public getApellido() {
+    return this.apellido;
+  }
+
+  public setApellido(pApellido:string) {
+    this.apellido = pApellido;
+  }
+
+  public getNombre() {
+    return this.nombre;
+  }
+
+  public setNombre(pNombre:string) {
+    this.nombre = pNombre;
+  }
+
+  public getGrado() {
+    return this.grado;
+  }
+
+  public setGrado(pGrado:string) {
+    this.grado = pGrado;
   }
 
   public getListaAlumnos() {
@@ -22,6 +47,12 @@ export class Maestro {
       console.log(`------`);
     }
   }
+
+  public setAlumnos(pAlumnos:Alumno[]) {
+    this.alumnos = pAlumnos;
+  }
+
+
 
 
 }
