@@ -31,7 +31,8 @@ export class Escuela {
     if (!this.alumnos.includes(pAlumno)) {
       this.alumnos.push(pAlumno);
       this.maestros.forEach(maestro => {
-        if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
+        if (!maestro.existeAlumno(pAlumno)) {
+        // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
           maestro.setAlumno(pAlumno);
         }
       });

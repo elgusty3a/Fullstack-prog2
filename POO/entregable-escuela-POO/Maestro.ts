@@ -63,17 +63,18 @@ export class Maestro {
   }
   //agrega un alumno al final del arreglo
   public setAlumno(pAlumno:Alumno) {
-    if (!this.existeAlumno(pAlumno)) {
+    // if (!this.existeAlumno(pAlumno)) {
       if (pAlumno.getGrado() == this.getGrado()) {
         this.alumnosDe.push(pAlumno); //se agrega a lista de alumnos del maestro
-        if (!this.escuela.existeAlumno(pAlumno)) {
-          this.escuela.matricularAlumno(pAlumno); //se agrega a lista de alumnos de al istitucion
-        }
-      } else {
-        console.log(`El alumno ${pAlumno.getNombre()} no cursa el grado ${this.getGrado()}`);
-      }
-    }else{
-      console.log(`El alumno ${pAlumno.getNombre()} ya pertenece a la institucion`);
+    //     console.log(`Se asigna el alumno ${pAlumno.getNombre()} al curso de ${this.getGrado()} dictado por ${this.getNombre()}`);
+    //     if (!this.escuela.existeAlumno(pAlumno)) {
+    //       this.escuela.matricularAlumno(pAlumno); //se agrega a lista de alumnos de al istitucion
+    //     }
+    //   } else {
+    //     console.log(`El alumno ${pAlumno.getNombre()} no cursa el grado ${this.getGrado()} dictado por ${this.getNombre()}`);
+    //   }
+    // }else{
+    //   console.log(`El alumno ${pAlumno.getNombre()} ya pertenece a la institucion`);
     }
   }
 

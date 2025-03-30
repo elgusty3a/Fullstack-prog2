@@ -20,11 +20,11 @@ var Escuela = /** @class */ (function () {
         console.log("------");
     };
     Escuela.prototype.matricularAlumno = function (pAlumno) {
-        var _this = this;
         if (!this.alumnos.includes(pAlumno)) {
             this.alumnos.push(pAlumno);
             this.maestros.forEach(function (maestro) {
-                if (_this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
+                if (!maestro.existeAlumno(pAlumno)) {
+                    // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
                     maestro.setAlumno(pAlumno);
                 }
             });

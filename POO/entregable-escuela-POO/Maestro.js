@@ -50,19 +50,18 @@ var Maestro = /** @class */ (function () {
     };
     //agrega un alumno al final del arreglo
     Maestro.prototype.setAlumno = function (pAlumno) {
-        if (!this.existeAlumno(pAlumno)) {
-            if (pAlumno.getGrado() == this.getGrado()) {
-                this.alumnosDe.push(pAlumno); //se agrega a lista de alumnos del maestro
-                if (!this.escuela.existeAlumno(pAlumno)) {
-                    this.escuela.matricularAlumno(pAlumno); //se agrega a lista de alumnos de al istitucion
-                }
-            }
-            else {
-                console.log("El alumno ".concat(pAlumno.getNombre(), " no cursa el grado ").concat(this.getGrado()));
-            }
-        }
-        else {
-            console.log("El alumno ".concat(pAlumno.getNombre(), " ya pertenece a la institucion"));
+        // if (!this.existeAlumno(pAlumno)) {
+        if (pAlumno.getGrado() == this.getGrado()) {
+            this.alumnosDe.push(pAlumno); //se agrega a lista de alumnos del maestro
+            //     console.log(`Se asigna el alumno ${pAlumno.getNombre()} al curso de ${this.getGrado()} dictado por ${this.getNombre()}`);
+            //     if (!this.escuela.existeAlumno(pAlumno)) {
+            //       this.escuela.matricularAlumno(pAlumno); //se agrega a lista de alumnos de al istitucion
+            //     }
+            //   } else {
+            //     console.log(`El alumno ${pAlumno.getNombre()} no cursa el grado ${this.getGrado()} dictado por ${this.getNombre()}`);
+            //   }
+            // }else{
+            //   console.log(`El alumno ${pAlumno.getNombre()} ya pertenece a la institucion`);
         }
     };
     Maestro.prototype.existeAlumno = function (pAlumno) {
