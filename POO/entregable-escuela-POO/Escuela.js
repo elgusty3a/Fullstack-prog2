@@ -10,13 +10,13 @@ var Escuela = /** @class */ (function () {
         this.cupoMaestro = pCupoMaestro; //TODO ver si se puede iniciar vacio
     }
     Escuela.prototype.getListaAlumnos = function () {
-        console.log("Alumnos de:");
+        console.log("Alumnos de la institucion:");
         console.log("------");
         for (var _i = 0, _a = this.alumnos; _i < _a.length; _i++) {
             var alum = _a[_i];
-            console.log("Nombre: ".concat(alum.getNombre()));
-            console.log("------");
+            console.log("Apellido: ".concat(alum.getApellido(), " \nNombre: ").concat(alum.getNombre(), " \nGrado: ").concat(alum.getGrado(), " \nNota: ").concat(alum.getNota(), "\n"));
         }
+        console.log("------");
     };
     Escuela.prototype.matricularAlumno = function (pAlumno) {
         this.alumnos.push(pAlumno);
@@ -34,13 +34,13 @@ var Escuela = /** @class */ (function () {
         this.maestros.splice(indice, 1);
     };
     Escuela.prototype.getListaMaestros = function () {
-        console.log("Maestros:");
+        console.log("Maestros de la institucion: ");
         console.log("------");
         for (var _i = 0, _a = this.maestros; _i < _a.length; _i++) {
             var maestro = _a[_i];
-            console.log("Nombre: ".concat(maestro.getNombre()));
-            console.log("------");
+            console.log("Apellido: ".concat(maestro.getApellido(), " \nNombre: ").concat(maestro.getNombre(), " \nGrado: ").concat(maestro.getGrado(), " \n"));
         }
+        console.log("------");
     };
     Escuela.prototype.getCupoAlumnos = function () {
         return this.cupoAlumno;

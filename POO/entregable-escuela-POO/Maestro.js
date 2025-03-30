@@ -32,12 +32,17 @@ var Maestro = /** @class */ (function () {
         console.log("------");
         for (var _i = 0, _a = this.alumnos; _i < _a.length; _i++) {
             var alum = _a[_i];
-            console.log("Nombre: ".concat(alum.getNombre()));
-            console.log("------");
+            console.log("Apellido: ".concat(alum.getApellido(), " \nNombre: ").concat(alum.getNombre(), " \nGrado: ").concat(alum.getGrado(), " \nNota: ").concat(alum.getNota(), "\n"));
         }
+        console.log("------");
     };
+    //agrega un grupo de alumnos en forma de arreglo
     Maestro.prototype.setAlumnos = function (pAlumnos) {
         this.alumnos = pAlumnos;
+    };
+    //agrega un alumno al final del arreglo
+    Maestro.prototype.setAlumno = function (pAlumno) {
+        this.alumnos.push(pAlumno);
     };
     return Maestro;
 }());

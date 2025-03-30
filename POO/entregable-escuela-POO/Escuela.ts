@@ -17,12 +17,12 @@ export class Escuela {
   }
 
   public getListaAlumnos() {
-    console.log(`Alumnos de:`);
+    console.log(`Alumnos de la institucion:`);
     console.log(`------`);
     for (const alum of this.alumnos) {
-      console.log(`Nombre: ${alum.getNombre()}`);
-      console.log(`------`);
+      console.log(`Apellido: ${alum.getApellido()} \nNombre: ${alum.getNombre()} \nGrado: ${alum.getGrado()} \nNota: ${alum.getNota()}\n`);
     }
+    console.log(`------`);
   }
 
   public matricularAlumno(pAlumno:Alumno){
@@ -45,12 +45,12 @@ export class Escuela {
   }
 
   public getListaMaestros() {
-    console.log(`Maestros:`);
+    console.log(`Maestros de la institucion: `);
     console.log(`------`);
     for (const maestro of this.maestros) {
-      console.log(`Nombre: ${maestro.getNombre()}`);
-      console.log(`------`);
+      console.log(`Apellido: ${maestro.getApellido()} \nNombre: ${maestro.getNombre()} \nGrado: ${maestro.getGrado()} \n`);
     }
+    console.log(`------`);
   }
 
   public getCupoAlumnos(){

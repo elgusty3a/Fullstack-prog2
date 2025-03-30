@@ -30,7 +30,7 @@ karen.getListaAlumnos();
 
 let noe = new Alumno("Martin","Noelia","Fullstack",2);
 cresta.matricularAlumno(noe);
-// cresta.getListaMaestros();
+cresta.getListaMaestros();
 karen.getListaAlumnos();
 gus.aprobo();
 vero.aprobo();

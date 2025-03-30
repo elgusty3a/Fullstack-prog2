@@ -43,16 +43,19 @@ export class Maestro {
     console.log(`Alumnos de ${this.nombre}:`);
     console.log(`------`);
     for (const alum of this.alumnos) {
-      console.log(`Nombre: ${alum.getNombre()}`);
-      console.log(`------`);
+      console.log(`Apellido: ${alum.getApellido()} \nNombre: ${alum.getNombre()} \nGrado: ${alum.getGrado()} \nNota: ${alum.getNota()}\n`);
     }
+    console.log(`------`);
   }
 
+  //agrega un grupo de alumnos en forma de arreglo
   public setAlumnos(pAlumnos:Alumno[]) {
     this.alumnos = pAlumnos;
   }
-
-
+  //agrega un alumno al final del arreglo
+  public setAlumno(pAlumno:Alumno) {
+    this.alumnos.push(pAlumno);
+  }
 
 
 }
