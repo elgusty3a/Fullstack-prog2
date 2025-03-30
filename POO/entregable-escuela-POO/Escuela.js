@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Escuela = void 0;
 var Escuela = /** @class */ (function () {
-    function Escuela(pAlumnos, pMaestros, pCupoAlumno, pCupoMaestro) {
+    function Escuela(pNombre, pCupoAlumno, pCupoMaestro) {
         // TODO ver como hacer el costructor de la escuela y demas
-        this.alumnos = pAlumnos;
-        this.maestros = pMaestros;
+        this.nombreInstitucion = pNombre;
+        this.alumnos = new Array();
+        this.maestros = new Array();
         this.cupoAlumno = pCupoAlumno;
         this.cupoMaestro = pCupoMaestro; //TODO ver si se puede iniciar vacio
     }
@@ -19,7 +20,18 @@ var Escuela = /** @class */ (function () {
         console.log("------");
     };
     Escuela.prototype.matricularAlumno = function (pAlumno) {
-        this.alumnos.push(pAlumno);
+        var _this = this;
+        if (!this.alumnos.includes(pAlumno)) {
+            this.alumnos.push(pAlumno);
+            this.maestros.forEach(function (maestro) {
+                if (_this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
+                    maestro.setAlumno(pAlumno);
+                }
+            });
+        }
+        else {
+            console.log("El alumno ".concat(pAlumno.getNombre(), " ").concat(pAlumno.getApellido(), " ya est\u00E1 matriculado"));
+        }
         // this.maestros.map(maestro)
     };
     Escuela.prototype.expulsarAlumno = function (pAlumno) {
@@ -48,6 +60,9 @@ var Escuela = /** @class */ (function () {
     //TODO hacer set de los cupos
     Escuela.prototype.getCupoMaestros = function () {
         return this.cupoMaestro;
+    };
+    Escuela.prototype.existeAlumno = function (pAlumno) {
+        return this.alumnos.includes(pAlumno);
     };
     return Escuela;
 }());

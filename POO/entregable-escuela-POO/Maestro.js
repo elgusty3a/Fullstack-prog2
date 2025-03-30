@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Maestro = void 0;
 var Maestro = /** @class */ (function () {
-    function Maestro(pApellido, pNombre, pGrado, pAlumnos) {
+    // constructor(pApellido:string,pNombre:string,pGrado:string,pAlumnos:Alumno[]) {
+    function Maestro(pApellido, pNombre, pGrado, pEscuela) {
         this.apellido = pApellido;
         this.nombre = pNombre;
         this.grado = pGrado;
-        this.alumnosDe = pAlumnos;
-        // this.alumnos = new Array(); //TODO ver si se puede iniciar asi un arreglo vacio
+        this.escuela = pEscuela;
+        this.alumnosDe = new Array(); //TODO ver si se puede iniciar asi un arreglo vacio
     }
     Maestro.prototype.getApellido = function () {
         return this.apellido;
@@ -27,6 +28,9 @@ var Maestro = /** @class */ (function () {
     Maestro.prototype.setGrado = function (pGrado) {
         this.grado = pGrado;
     };
+    Maestro.prototype.getAlumnosDe = function () {
+        return this.alumnosDe;
+    };
     Maestro.prototype.getListaAlumnosDe = function () {
         console.log("Alumnos de ".concat(this.nombre, ":"));
         console.log("------");
@@ -40,17 +44,29 @@ var Maestro = /** @class */ (function () {
     Maestro.prototype.setAlumnos = function (pAlumnos) {
         var _this = this;
         pAlumnos.forEach(function (alumno) {
+            // console.log(alumno);
             _this.setAlumno(alumno);
         });
     };
     //agrega un alumno al final del arreglo
     Maestro.prototype.setAlumno = function (pAlumno) {
-        if (pAlumno.getGrado() == this.getGrado()) {
-            this.alumnosDe.push(pAlumno);
+        if (!this.existeAlumno(pAlumno)) {
+            if (pAlumno.getGrado() == this.getGrado()) {
+                this.alumnosDe.push(pAlumno); //se agrega a lista de alumnos del maestro
+                if (!this.escuela.existeAlumno(pAlumno)) {
+                    this.escuela.matricularAlumno(pAlumno); //se agrega a lista de alumnos de al istitucion
+                }
+            }
+            else {
+                console.log("El alumno ".concat(pAlumno.getNombre(), " no cursa el grado ").concat(this.getGrado()));
+            }
         }
         else {
-            console.log("El alumno ".concat(pAlumno.getNombre(), " no cursa el grado ").concat(this.getGrado()));
+            console.log("El alumno ".concat(pAlumno.getNombre(), " ya pertenece a la institucion"));
         }
+    };
+    Maestro.prototype.existeAlumno = function (pAlumno) {
+        return this.alumnosDe.includes(pAlumno);
     };
     return Maestro;
 }());
