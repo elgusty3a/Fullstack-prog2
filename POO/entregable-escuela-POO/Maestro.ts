@@ -5,13 +5,13 @@ export class Maestro {
   private apellido:string;
   private nombre:string;
   private grado:string;
-  private alumnos:Alumno[];
+  private alumnosDe:Alumno[];
 
   constructor(pApellido:string,pNombre:string,pGrado:string,pAlumnos:Alumno[]) {
     this.apellido = pApellido;
     this.nombre = pNombre;
     this.grado = pGrado;
-    this.alumnos = pAlumnos;
+    this.alumnosDe = pAlumnos;
     // this.alumnos = new Array(); //TODO ver si se puede iniciar asi un arreglo vacio
   }
 
@@ -39,10 +39,10 @@ export class Maestro {
     this.grado = pGrado;
   }
 
-  public getListaAlumnos() {
+  public getListaAlumnosDe() {
     console.log(`Alumnos de ${this.nombre}:`);
     console.log(`------`);
-    for (const alum of this.alumnos) {
+    for (const alum of this.alumnosDe) {
       console.log(`Apellido: ${alum.getApellido()} \nNombre: ${alum.getNombre()} \nGrado: ${alum.getGrado()} \nNota: ${alum.getNota()}\n`);
     }
     console.log(`------`);
@@ -50,11 +50,17 @@ export class Maestro {
 
   //agrega un grupo de alumnos en forma de arreglo
   public setAlumnos(pAlumnos:Alumno[]) {
-    this.alumnos = pAlumnos;
+    pAlumnos.forEach(alumno => {
+      this.setAlumno(alumno);
+    });
   }
   //agrega un alumno al final del arreglo
   public setAlumno(pAlumno:Alumno) {
-    this.alumnos.push(pAlumno);
+    if (pAlumno.getGrado() == this.getGrado()) {
+      this.alumnosDe.push(pAlumno);
+    }else{
+      console.log(`El alumno ${pAlumno.getNombre()} no cursa el grado ${this.getGrado()}`);
+    }
   }
 
 

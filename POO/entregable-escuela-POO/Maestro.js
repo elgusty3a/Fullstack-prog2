@@ -6,7 +6,7 @@ var Maestro = /** @class */ (function () {
         this.apellido = pApellido;
         this.nombre = pNombre;
         this.grado = pGrado;
-        this.alumnos = pAlumnos;
+        this.alumnosDe = pAlumnos;
         // this.alumnos = new Array(); //TODO ver si se puede iniciar asi un arreglo vacio
     }
     Maestro.prototype.getApellido = function () {
@@ -27,10 +27,10 @@ var Maestro = /** @class */ (function () {
     Maestro.prototype.setGrado = function (pGrado) {
         this.grado = pGrado;
     };
-    Maestro.prototype.getListaAlumnos = function () {
+    Maestro.prototype.getListaAlumnosDe = function () {
         console.log("Alumnos de ".concat(this.nombre, ":"));
         console.log("------");
-        for (var _i = 0, _a = this.alumnos; _i < _a.length; _i++) {
+        for (var _i = 0, _a = this.alumnosDe; _i < _a.length; _i++) {
             var alum = _a[_i];
             console.log("Apellido: ".concat(alum.getApellido(), " \nNombre: ").concat(alum.getNombre(), " \nGrado: ").concat(alum.getGrado(), " \nNota: ").concat(alum.getNota(), "\n"));
         }
@@ -38,11 +38,19 @@ var Maestro = /** @class */ (function () {
     };
     //agrega un grupo de alumnos en forma de arreglo
     Maestro.prototype.setAlumnos = function (pAlumnos) {
-        this.alumnos = pAlumnos;
+        var _this = this;
+        pAlumnos.forEach(function (alumno) {
+            _this.setAlumno(alumno);
+        });
     };
     //agrega un alumno al final del arreglo
     Maestro.prototype.setAlumno = function (pAlumno) {
-        this.alumnos.push(pAlumno);
+        if (pAlumno.getGrado() == this.getGrado()) {
+            this.alumnosDe.push(pAlumno);
+        }
+        else {
+            console.log("El alumno ".concat(pAlumno.getNombre(), " no cursa el grado ").concat(this.getGrado()));
+        }
     };
     return Maestro;
 }());
