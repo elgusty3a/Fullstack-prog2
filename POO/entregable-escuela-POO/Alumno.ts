@@ -46,11 +46,11 @@ export class Alumno {
 
   public aprobo():boolean {
     if (this.nota >= 7) {
-      return true;
       console.log("APROBADO PAPA!!!!");
+      return true;
     } else {
-      return false;
       console.log("ANDA A ESTUDIAR PIBE");
+      return false;
     }
   }
 

@@ -26,11 +26,12 @@ let staff1 = [braian,karen];
 
 let cresta = new Escuela(grupoAlu1,staff1,5,3);
 cresta.getListaAlumnos();
-cresta.getListaMaestros();
+karen.getListaAlumnos();
 
 let noe = new Alumno("Martin","Noelia","Fullstack",2);
 cresta.matricularAlumno(noe);
-cresta.getListaAlumnos();
-cresta.expulsarAlumno(gus);
-cresta.getListaAlumnos();
+// cresta.getListaMaestros();
+karen.getListaAlumnos();
+gus.aprobo();
+vero.aprobo();
 

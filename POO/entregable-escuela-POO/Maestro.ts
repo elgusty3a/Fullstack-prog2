@@ -40,7 +40,7 @@ export class Maestro {
   }
 
   public getListaAlumnos() {
-    console.log(`Alumnos:`);
+    console.log(`Alumnos de ${this.nombre}:`);
     console.log(`------`);
     for (const alum of this.alumnos) {
       console.log(`Nombre: ${alum.getNombre()}`);

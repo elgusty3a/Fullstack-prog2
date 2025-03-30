@@ -17,7 +17,7 @@ export class Escuela {
   }
 
   public getListaAlumnos() {
-    console.log(`Alumnos:`);
+    console.log(`Alumnos de:`);
     console.log(`------`);
     for (const alum of this.alumnos) {
       console.log(`Nombre: ${alum.getNombre()}`);
@@ -27,11 +27,12 @@ export class Escuela {
 
   public matricularAlumno(pAlumno:Alumno){
     this.alumnos.push(pAlumno);
+    // this.maestros.map(maestro)
   }
 
   public expulsarAlumno(pAlumno:Alumno){
-    let arrAux:Alumno[] = this.alumnos.filter(alum => {alum.getNombre !== pAlumno.getNombre});
-    this.alumnos = arrAux;
+    let indice:number = this.alumnos.indexOf(pAlumno);
+    this.alumnos.splice(indice,1);
   }
 
   public contratarMaestro(pMaestro:Maestro){
@@ -39,10 +40,10 @@ export class Escuela {
   }
 
   public despedirMaestro(pMaestro:Maestro){
-    let arrAux:Maestro[] = this.maestros.filter(maestro => maestro.getNombre !== pMaestro.getNombre);
-    this.maestros = arrAux;
+    let indice:number = this.maestros.indexOf(pMaestro);
+    this.maestros.splice(indice,1);
   }
-  
+
   public getListaMaestros() {
     console.log(`Maestros:`);
     console.log(`------`);
