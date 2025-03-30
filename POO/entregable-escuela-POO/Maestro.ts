@@ -78,6 +78,11 @@ export class Maestro {
     }
   }
 
+  public expulsarAlumno(pAlumno:Alumno){
+    let indice:number = this.alumnosDe.indexOf(pAlumno);
+    this.alumnosDe.splice(indice,1);
+  }
+
   public existeAlumno(pAlumno:Alumno){
     return this.alumnosDe.includes(pAlumno);
   }

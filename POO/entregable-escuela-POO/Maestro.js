@@ -64,6 +64,10 @@ var Maestro = /** @class */ (function () {
             //   console.log(`El alumno ${pAlumno.getNombre()} ya pertenece a la institucion`);
         }
     };
+    Maestro.prototype.expulsarAlumno = function (pAlumno) {
+        var indice = this.alumnosDe.indexOf(pAlumno);
+        this.alumnosDe.splice(indice, 1);
+    };
     Maestro.prototype.existeAlumno = function (pAlumno) {
         return this.alumnosDe.includes(pAlumno);
     };

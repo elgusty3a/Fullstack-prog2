@@ -45,6 +45,12 @@ export class Escuela {
   public expulsarAlumno(pAlumno:Alumno){
     let indice:number = this.alumnos.indexOf(pAlumno);
     this.alumnos.splice(indice,1);
+    this.maestros.forEach(maestro => {
+      if (maestro.existeAlumno(pAlumno)) {
+      // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
+        maestro.expulsarAlumno(pAlumno);
+      }
+    });
   }
 
   public contratarMaestro(pMaestro:Maestro){

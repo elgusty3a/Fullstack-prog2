@@ -37,6 +37,12 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.expulsarAlumno = function (pAlumno) {
         var indice = this.alumnos.indexOf(pAlumno);
         this.alumnos.splice(indice, 1);
+        this.maestros.forEach(function (maestro) {
+            if (maestro.existeAlumno(pAlumno)) {
+                // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
+                maestro.expulsarAlumno(pAlumno);
+            }
+        });
     };
     Escuela.prototype.contratarMaestro = function (pMaestro) {
         this.maestros.push(pMaestro);

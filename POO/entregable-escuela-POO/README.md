@@ -12,3 +12,9 @@
   - Veronica Martin
   - Juan Bayugar
   - Gustavo Arias
+
+## Instrucciones para dar de alta un alumno:
+ - Para dar de alta un alumno se hace desde el metodo de matriculacion de la institucion.
+
+    A modo de ejemplo:
+      - cresta.marticularAlumno(francisco);
