@@ -6,15 +6,18 @@ export class Escuela {
   private nombreInstitucion:string;
   private alumnos:Alumno[];
   private maestros:Maestro[];
-  private cupoAlumno:number;
-  private cupoMaestro:number;
 
-  constructor(pNombre:string,pCupoAlumno:number,pCupoMaestro:number) {
+  constructor(pNombre:string) {
     this.nombreInstitucion = pNombre;
     this.alumnos = new Array();
     this.maestros = new Array();
-    this.cupoAlumno = pCupoAlumno;
-    this.cupoMaestro = pCupoMaestro;
+  }
+
+  public getNombreInstitucion(){
+    return this.nombreInstitucion;
+  }
+  public setNombreInstitucion(pNombre:string){
+    this.nombreInstitucion = pNombre;
   }
 
   public getListaAlumnos() {
@@ -71,14 +74,6 @@ export class Escuela {
       console.log(`Apellido: ${maestro.getApellido()} \nNombre: ${maestro.getNombre()} \nGrado: ${maestro.getGrado()} \n`);
     }
     console.log(`------`);
-  }
-
-  public getCupoAlumnos(){
-    return this.cupoAlumno;
-  }
-  //TODO hacer set de los cupos
-  public getCupoMaestros(){
-    return this.cupoMaestro;
   }
 
   public existeAlumno(pAlumno:Alumno){
