@@ -10,12 +10,11 @@ export class Escuela {
   private cupoMaestro:number;
 
   constructor(pNombre:string,pCupoAlumno:number,pCupoMaestro:number) {
-    // TODO ver como hacer el costructor de la escuela y demas
     this.nombreInstitucion = pNombre;
     this.alumnos = new Array();
     this.maestros = new Array();
     this.cupoAlumno = pCupoAlumno;
-    this.cupoMaestro = pCupoMaestro; //TODO ver si se puede iniciar vacio
+    this.cupoMaestro = pCupoMaestro;
   }
 
   public getListaAlumnos() {
@@ -27,19 +26,23 @@ export class Escuela {
     console.log(`------`);
   }
 
+  public matricularAlumnos(pAlumnos:Alumno[]) {
+    pAlumnos.forEach(alumno => {
+      this.matricularAlumno(alumno);
+    });
+  }
+
   public matricularAlumno(pAlumno:Alumno){
     if (!this.alumnos.includes(pAlumno)) {
       this.alumnos.push(pAlumno);
       this.maestros.forEach(maestro => {
         if (!maestro.existeAlumno(pAlumno)) {
-        // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
           maestro.setAlumno(pAlumno);
         }
       });
     }else{
       console.log(`El alumno ${pAlumno.getNombre()} ${pAlumno.getApellido()} ya está matriculado`);
     }
-    // this.maestros.map(maestro)
   }
 
   public expulsarAlumno(pAlumno:Alumno){
@@ -47,7 +50,6 @@ export class Escuela {
     this.alumnos.splice(indice,1);
     this.maestros.forEach(maestro => {
       if (maestro.existeAlumno(pAlumno)) {
-      // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
         maestro.expulsarAlumno(pAlumno);
       }
     });

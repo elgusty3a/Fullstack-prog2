@@ -3,12 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Escuela = void 0;
 var Escuela = /** @class */ (function () {
     function Escuela(pNombre, pCupoAlumno, pCupoMaestro) {
-        // TODO ver como hacer el costructor de la escuela y demas
         this.nombreInstitucion = pNombre;
         this.alumnos = new Array();
         this.maestros = new Array();
         this.cupoAlumno = pCupoAlumno;
-        this.cupoMaestro = pCupoMaestro; //TODO ver si se puede iniciar vacio
+        this.cupoMaestro = pCupoMaestro;
     }
     Escuela.prototype.getListaAlumnos = function () {
         console.log("Alumnos de la institucion:");
@@ -19,12 +18,17 @@ var Escuela = /** @class */ (function () {
         }
         console.log("------");
     };
+    Escuela.prototype.matricularAlumnos = function (pAlumnos) {
+        var _this = this;
+        pAlumnos.forEach(function (alumno) {
+            _this.matricularAlumno(alumno);
+        });
+    };
     Escuela.prototype.matricularAlumno = function (pAlumno) {
         if (!this.alumnos.includes(pAlumno)) {
             this.alumnos.push(pAlumno);
             this.maestros.forEach(function (maestro) {
                 if (!maestro.existeAlumno(pAlumno)) {
-                    // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
                     maestro.setAlumno(pAlumno);
                 }
             });
@@ -32,14 +36,12 @@ var Escuela = /** @class */ (function () {
         else {
             console.log("El alumno ".concat(pAlumno.getNombre(), " ").concat(pAlumno.getApellido(), " ya est\u00E1 matriculado"));
         }
-        // this.maestros.map(maestro)
     };
     Escuela.prototype.expulsarAlumno = function (pAlumno) {
         var indice = this.alumnos.indexOf(pAlumno);
         this.alumnos.splice(indice, 1);
         this.maestros.forEach(function (maestro) {
             if (maestro.existeAlumno(pAlumno)) {
-                // if (this.existeAlumno(pAlumno) && !maestro.existeAlumno(pAlumno)) {
                 maestro.expulsarAlumno(pAlumno);
             }
         });
