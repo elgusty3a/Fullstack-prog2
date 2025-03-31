@@ -50,12 +50,25 @@ var Escuela = /** @class */ (function () {
             }
         });
     };
+    Escuela.prototype.contratarMaestros = function (pMaestros) {
+        var _this = this;
+        pMaestros.forEach(function (maestro) {
+            _this.contratarMaestro(maestro);
+        });
+    };
     Escuela.prototype.contratarMaestro = function (pMaestro) {
-        this.maestros.push(pMaestro);
+        if (!this.existeMaestro(pMaestro)) {
+            this.maestros.push(pMaestro);
+        }
     };
     Escuela.prototype.despedirMaestro = function (pMaestro) {
-        var indice = this.maestros.indexOf(pMaestro);
-        this.maestros.splice(indice, 1);
+        if (this.existeMaestro(pMaestro)) {
+            var indice = this.maestros.indexOf(pMaestro);
+            this.maestros.splice(indice, 1);
+        }
+        else {
+            console.log("El maestro ".concat(pMaestro.getNombre(), " ").concat(pMaestro.getApellido(), " no pertenece a la institucion"));
+        }
     };
     Escuela.prototype.getListaMaestros = function () {
         console.log("Maestros de la institucion: ");
@@ -68,6 +81,9 @@ var Escuela = /** @class */ (function () {
     };
     Escuela.prototype.existeAlumno = function (pAlumno) {
         return this.alumnos.includes(pAlumno);
+    };
+    Escuela.prototype.existeMaestro = function (pMaestro) {
+        return this.maestros.includes(pMaestro);
     };
     return Escuela;
 }());

@@ -28,6 +28,7 @@ let grupoAlu1 = [vero,gus,juan];
 
 console.log(("creamos los profes"));
 console.log(("-/-/-/-/-/-/-/-"));
+let pedro = new Maestro("Doñate","Pedro","3er cuatrimestre");
 let braian = new Maestro("Aued","Braian","2do cuatrimestre");
 let karen = new Maestro("Simari","Karen","1er cuatrimestre");
 console.log(("contratamos los profes y mostramos"));
@@ -73,6 +74,10 @@ cresta.expulsarAlumno(gus)
 karen.getListaAlumnosDe();
 braian.getListaAlumnosDe();
 cresta.getListaAlumnos()
+console.log(("-/-/-/-/-/-/-/-"));
+console.log(("expulso a braian y muestro lista de maestros de la institucion "));
+cresta.despedirMaestro(pedro); //deberia decir que no pertenece a dicha escuela
+cresta.getListaMaestros();
 console.log(("-/-/-/-/-/-/-/-"));
 
 

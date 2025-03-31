@@ -58,13 +58,25 @@ export class Escuela {
     });
   }
 
+  public contratarMaestros(pMaestros:Maestro[]) {
+    pMaestros.forEach(maestro => {
+      this.contratarMaestro(maestro);
+    });
+  }
+
   public contratarMaestro(pMaestro:Maestro){
-    this.maestros.push(pMaestro);
+    if (!this.existeMaestro(pMaestro)){
+      this.maestros.push(pMaestro);
+    }
   }
 
   public despedirMaestro(pMaestro:Maestro){
-    let indice:number = this.maestros.indexOf(pMaestro);
-    this.maestros.splice(indice,1);
+    if (this.existeMaestro(pMaestro)) {
+      let indice:number = this.maestros.indexOf(pMaestro);
+      this.maestros.splice(indice,1);
+    }else{
+      console.log(`El maestro ${pMaestro.getNombre()} ${pMaestro.getApellido()} no pertenece a la institucion`);
+    }
   }
 
   public getListaMaestros() {
@@ -78,6 +90,9 @@ export class Escuela {
 
   public existeAlumno(pAlumno:Alumno){
     return this.alumnos.includes(pAlumno);
+  }
+  public existeMaestro(pMaestro:Maestro){
+    return this.maestros.includes(pMaestro);
   }
 
 
