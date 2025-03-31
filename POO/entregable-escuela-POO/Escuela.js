@@ -2,13 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Escuela = void 0;
 var Escuela = /** @class */ (function () {
-    function Escuela(pNombre, pCupoAlumno, pCupoMaestro) {
+    function Escuela(pNombre) {
         this.nombreInstitucion = pNombre;
         this.alumnos = new Array();
         this.maestros = new Array();
-        this.cupoAlumno = pCupoAlumno;
-        this.cupoMaestro = pCupoMaestro;
     }
+    Escuela.prototype.getNombreInstitucion = function () {
+        return this.nombreInstitucion;
+    };
+    Escuela.prototype.setNombreInstitucion = function (pNombre) {
+        this.nombreInstitucion = pNombre;
+    };
     Escuela.prototype.getListaAlumnos = function () {
         console.log("Alumnos de la institucion:");
         console.log("------");
@@ -61,13 +65,6 @@ var Escuela = /** @class */ (function () {
             console.log("Apellido: ".concat(maestro.getApellido(), " \nNombre: ").concat(maestro.getNombre(), " \nGrado: ").concat(maestro.getGrado(), " \n"));
         }
         console.log("------");
-    };
-    Escuela.prototype.getCupoAlumnos = function () {
-        return this.cupoAlumno;
-    };
-    //TODO hacer set de los cupos
-    Escuela.prototype.getCupoMaestros = function () {
-        return this.cupoMaestro;
     };
     Escuela.prototype.existeAlumno = function (pAlumno) {
         return this.alumnos.includes(pAlumno);
