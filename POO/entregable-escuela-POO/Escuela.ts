@@ -67,6 +67,9 @@ export class Escuela {
   public contratarMaestro(pMaestro:Maestro){
     if (!this.existeMaestro(pMaestro)){
       this.maestros.push(pMaestro);
+      this.alumnos.forEach(alumno => {
+        pMaestro.setAlumno(alumno);
+      });
     }
   }
 

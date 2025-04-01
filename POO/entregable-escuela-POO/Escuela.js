@@ -59,6 +59,9 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.contratarMaestro = function (pMaestro) {
         if (!this.existeMaestro(pMaestro)) {
             this.maestros.push(pMaestro);
+            this.alumnos.forEach(function (alumno) {
+                pMaestro.setAlumno(alumno);
+            });
         }
     };
     Escuela.prototype.despedirMaestro = function (pMaestro) {

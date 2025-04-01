@@ -26,7 +26,7 @@ var juan = new Alumno_1.Alumno("Bayugar", "Juan", "1er cuatrimestre", 8);
 var grupoAlu1 = [vero, gus, juan];
 console.log(("creamos los profes"));
 console.log(("-/-/-/-/-/-/-/-"));
-var pedro = new Maestro_1.Maestro("Doñate", "Pedro", "3er cuatrimestre");
+var pedro = new Maestro_1.Maestro("Doñate", "Pedro", "2do cuatrimestre");
 var braian = new Maestro_1.Maestro("Aued", "Braian", "2do cuatrimestre");
 var karen = new Maestro_1.Maestro("Simari", "Karen", "1er cuatrimestre");
 console.log(("contratamos los profes y mostramos"));
@@ -74,6 +74,10 @@ braian.getListaAlumnosDe();
 cresta.getListaAlumnos();
 console.log(("-/-/-/-/-/-/-/-"));
 console.log(("expulso a braian y muestro lista de maestros de la institucion "));
-cresta.despedirMaestro(pedro);
+cresta.despedirMaestro(braian); //deberia decir que no pertenece a dicha escuela
 cresta.getListaMaestros();
+cresta.despedirMaestro(pedro); //deberia decir que no pertenece a dicha escuela
+cresta.contratarMaestro(pedro);
+cresta.getListaMaestros();
+pedro.getListaAlumnosDe();
 console.log(("-/-/-/-/-/-/-/-"));
