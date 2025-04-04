@@ -6,7 +6,6 @@ import * as rdl from 'readline-sync';
 export class GestorLibros {
 
   private libros:Libro[];
-  private stock:number;
   private socio:Socio[];
 
   constructor() {
