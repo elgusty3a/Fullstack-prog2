@@ -9,18 +9,18 @@ let got1 = new Libro("Juego de tronos","GRR Martin","Fantasia","Americana");
 let got2 = new Libro("Duelo de reyes","GRR Martin","Fantasia","Americana");
 let got3 = new Libro("Tormenta de espadas","GRR Martin","Fantasia","Americana");
 let cortazar1 = new Libro("Un tal lucas","Julio Cortazar","Realismo","Clarin");
-let opcion:number = -1;
+let opcion:number;
 let listaLibros:Libro[] = [got1,got2,got3,cortazar1];
 sarmiento.insertarLibros(listaLibros);
 
 do {
-  let opcion:number = rdl.questionInt(`Bienvenidos a Biblioteca ${sarmiento.getNombre()}\nElija una opcion:\n
+  opcion = rdl.questionInt(`Bienvenidos a Biblioteca ${sarmiento.getNombre()}\nElija una opcion:\n
     1 - Buscar Libro\n
     2 - Crear Libro\n
     3 - Modificar Libro\n
     4 - Eliminar Libro\n
     5 - Imprimir lista de libros\n
-    10 - Terminar programa\n`)
+    0 - Terminar programa\n`)
   switch (opcion) {
     case 1:
       let indice:number = sarmiento.buscarLibro(rdl.question(`Ingrese el titulo a buscar\n`));
@@ -52,7 +52,7 @@ do {
     case 5:
       sarmiento.imprimirListaLibros();
       break;
-    case 10:
+    case 0:
       console.log("Fin\n----------");
       break;
     default: console.log("La opcion no es válida\n");break;

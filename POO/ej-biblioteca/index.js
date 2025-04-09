@@ -9,12 +9,12 @@ var got1 = new libro_1.Libro("Juego de tronos", "GRR Martin", "Fantasia", "Ameri
 var got2 = new libro_1.Libro("Duelo de reyes", "GRR Martin", "Fantasia", "Americana");
 var got3 = new libro_1.Libro("Tormenta de espadas", "GRR Martin", "Fantasia", "Americana");
 var cortazar1 = new libro_1.Libro("Un tal lucas", "Julio Cortazar", "Realismo", "Clarin");
-var opcion = -1;
+var opcion;
 var listaLibros = [got1, got2, got3, cortazar1];
 sarmiento.insertarLibros(listaLibros);
 do {
-    var opcion_1 = rdl.questionInt("Bienvenidos a Biblioteca ".concat(sarmiento.getNombre(), "\nElija una opcion:\n\n    1 - Buscar Libro\n\n    2 - Crear Libro\n\n    3 - Modificar Libro\n\n    4 - Eliminar Libro\n\n    5 - Imprimir lista de libros\n\n    10 - Terminar programa\n"));
-    switch (opcion_1) {
+    opcion = rdl.questionInt("Bienvenidos a Biblioteca ".concat(sarmiento.getNombre(), "\nElija una opcion:\n\n    1 - Buscar Libro\n\n    2 - Crear Libro\n\n    3 - Modificar Libro\n\n    4 - Eliminar Libro\n\n    5 - Imprimir lista de libros\n\n    0 - Terminar programa\n"));
+    switch (opcion) {
         case 1:
             var indice = sarmiento.buscarLibro(rdl.question("Ingrese el titulo a buscar\n"));
             if (indice != undefined) {
@@ -48,7 +48,7 @@ do {
         case 5:
             sarmiento.imprimirListaLibros();
             break;
-        case 10:
+        case 0:
             console.log("Fin\n----------");
             break;
         default:
