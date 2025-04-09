@@ -44,6 +44,9 @@ export class GestorLibros {
 
   public buscarLibro(pTitulo:string):number{
     let indice:number = this.libros.findIndex(libro => libro.getTitulo().toUpperCase().includes(pTitulo.toUpperCase()));
+    if (indice===undefined) {
+      indice = -1;
+    }
     return indice;
   }
 
@@ -57,11 +60,8 @@ export class GestorLibros {
     });
   }
 
-  public modificar(pTitulo:string){
-    if (this.buscarLibro(pTitulo)!=undefined) {
-      let indice:number=this.buscarLibro(pTitulo);
-      this.menuModificar(indice);
-    }else{console.log("El libro no exite");}
+  public modificar(pIndice:number){
+      this.menuModificar(pIndice);
   }
 
   private menuModificar(pIndice:number){
@@ -88,13 +88,62 @@ export class GestorLibros {
     }
   }
 
-  public eliminar(pTitulo:string){
-    if (this.buscarLibro(pTitulo)!=undefined) {
-      this.libros.splice(this.buscarLibro(pTitulo),1);
-    }
+  public eliminar(pIndice:number){
+      this.libros.splice(pIndice,1);
+    // }
   }
 
-
-
+  public menuGestor(){
+    let opcion:number;
+    let indice:number;
+    do {
+      opcion = rdl.questionInt(`Bienvenidos a Biblioteca ${this.getNombre()}\nElija una opcion:\n
+        1 - Buscar Libro\n
+        2 - Crear Libro\n
+        3 - Modificar Libro\n
+        4 - Eliminar Libro\n
+        5 - Imprimir lista de libros\n
+        0 - Terminar programa\n`)
+      switch (opcion) {
+        case 1:
+          indice = this.buscarLibro(rdl.question(`Ingrese el titulo a buscar\n`));
+          if(indice >= 0){
+            this.imprimirLibro(indice);
+          }else{console.log("El libro no exite\n");}
+          break;
+          case 2:
+            this.crearLibro();
+            this.imprimirListaLibros();
+            break;
+          case 3:
+            indice = this.buscarLibro(rdl.question(`Ingrese el titulo a buscar\n`));
+            if(indice >= 0){
+              this.imprimirLibro(indice);
+              let respuesta:string = rdl.question("Si este es el libro a modificar ingrese Y");
+              if (respuesta.toUpperCase() == "Y") {
+                this.modificar(indice);
+              }
+            }else{console.log("El libro no exite\n");}
+          break;
+        case 4:
+          indice = this.buscarLibro(rdl.question(`Ingrese el titulo a eliminar\n`));
+          if(indice >= 0){
+            this.imprimirLibro(indice);
+            let respuesta:string = rdl.question("Si este es el libro a eliminar ingrese Y");
+            if (respuesta.toUpperCase() == "Y") {
+              this.eliminar(indice);
+            }
+          }else{console.log("El libro no exite\n");}
+          break;
+        case 5:
+          this.imprimirListaLibros();
+          break;
+        case 0:
+          console.log("Fin\n----------");
+          break;
+        default: console.log("La opcion no es válida\n");break;
+      }
+    }while (opcion != 0);
+  }
 
 }

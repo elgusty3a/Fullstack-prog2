@@ -35,6 +35,9 @@ var GestorLibros = /** @class */ (function () {
     };
     GestorLibros.prototype.buscarLibro = function (pTitulo) {
         var indice = this.libros.findIndex(function (libro) { return libro.getTitulo().toUpperCase().includes(pTitulo.toUpperCase()); });
+        if (indice === undefined) {
+            indice = -1;
+        }
         return indice;
     };
     GestorLibros.prototype.imprimirLibro = function (pIndice) {
@@ -45,14 +48,8 @@ var GestorLibros = /** @class */ (function () {
             console.log(libro);
         });
     };
-    GestorLibros.prototype.modificar = function (pTitulo) {
-        if (this.buscarLibro(pTitulo) != undefined) {
-            var indice = this.buscarLibro(pTitulo);
-            this.menuModificar(indice);
-        }
-        else {
-            console.log("El libro no exite");
-        }
+    GestorLibros.prototype.modificar = function (pIndice) {
+        this.menuModificar(pIndice);
     };
     GestorLibros.prototype.menuModificar = function (pIndice) {
         var opcion = rdl.questionInt("Indique que atributo del libro desea modificar:\n\n      1 - Titulo\n\n      2 - Autor\n\n      3 - Genero\n\n      4 - Editorial\n");
@@ -74,10 +71,66 @@ var GestorLibros = /** @class */ (function () {
                 break;
         }
     };
-    GestorLibros.prototype.eliminar = function (pTitulo) {
-        if (this.buscarLibro(pTitulo) != undefined) {
-            this.libros.splice(this.buscarLibro(pTitulo), 1);
-        }
+    GestorLibros.prototype.eliminar = function (pIndice) {
+        this.libros.splice(pIndice, 1);
+        // }
+    };
+    GestorLibros.prototype.menuGestor = function () {
+        var opcion;
+        var indice;
+        do {
+            opcion = rdl.questionInt("Bienvenidos a Biblioteca ".concat(this.getNombre(), "\nElija una opcion:\n\n        1 - Buscar Libro\n\n        2 - Crear Libro\n\n        3 - Modificar Libro\n\n        4 - Eliminar Libro\n\n        5 - Imprimir lista de libros\n\n        0 - Terminar programa\n"));
+            switch (opcion) {
+                case 1:
+                    indice = this.buscarLibro(rdl.question("Ingrese el titulo a buscar\n"));
+                    if (indice >= 0) {
+                        this.imprimirLibro(indice);
+                    }
+                    else {
+                        console.log("El libro no exite\n");
+                    }
+                    break;
+                case 2:
+                    this.crearLibro();
+                    this.imprimirListaLibros();
+                    break;
+                case 3:
+                    indice = this.buscarLibro(rdl.question("Ingrese el titulo a buscar\n"));
+                    if (indice >= 0) {
+                        this.imprimirLibro(indice);
+                        var respuesta = rdl.question("Si este es el libro a modificar ingrese Y");
+                        if (respuesta.toUpperCase() == "Y") {
+                            this.modificar(indice);
+                        }
+                    }
+                    else {
+                        console.log("El libro no exite\n");
+                    }
+                    break;
+                case 4:
+                    indice = this.buscarLibro(rdl.question("Ingrese el titulo a eliminar\n"));
+                    if (indice >= 0) {
+                        this.imprimirLibro(indice);
+                        var respuesta = rdl.question("Si este es el libro a eliminar ingrese Y");
+                        if (respuesta.toUpperCase() == "Y") {
+                            this.eliminar(indice);
+                        }
+                    }
+                    else {
+                        console.log("El libro no exite\n");
+                    }
+                    break;
+                case 5:
+                    this.imprimirListaLibros();
+                    break;
+                case 0:
+                    console.log("Fin\n----------");
+                    break;
+                default:
+                    console.log("La opcion no es válida\n");
+                    break;
+            }
+        } while (opcion != 0);
     };
     return GestorLibros;
 }());
