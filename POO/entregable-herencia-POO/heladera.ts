@@ -2,7 +2,7 @@ import { Electrodomestico } from "./electrodomestico";
 
 export class Heladera extends Electrodomestico{
 
-  private temperatura:number;
+  protected temperatura:number;
 
   constructor(pMarca:string,pModelo:string,pEstaEncendido:boolean,pTemperatura:number){
     super(pMarca,pModelo,pEstaEncendido);

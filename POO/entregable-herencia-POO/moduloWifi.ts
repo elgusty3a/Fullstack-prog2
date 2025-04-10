@@ -8,7 +8,7 @@ export class ModuloWifi {
     this.frecuenciaGHz = pFrecuenciaGHz;
   }
 
-  public conectarInternet(){
+  public conectarInternet():void{
     console.log("Conexión establecida");
   }
 
@@ -16,7 +16,7 @@ export class ModuloWifi {
     return this.velocidadMbps;
   }
 
-  public mostrarVelocidad(){
+  public mostrarVelocidad():void{
     console.log(`La velocidad de conexión es ${this.getVelocidad()}`);
   }
 
@@ -28,11 +28,11 @@ export class ModuloWifi {
     return this.frecuenciaGHz;
   }
 
-  public setFrecuencia(pFrecuenciaGHz:number){
+  public setFrecuencia(pFrecuenciaGHz:number):void{
     this.frecuenciaGHz = pFrecuenciaGHz;
   }
 
-  public mostrarInfo(){
+  public mostrarInfo():void{
     console.log(`Velocidad de conexión: ${this.getVelocidad()}\nFrecuencia de conexión: ${this.getFrecuencia()}\n`);
   }
 

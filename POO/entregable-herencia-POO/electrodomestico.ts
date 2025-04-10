@@ -1,8 +1,8 @@
 export class Electrodomestico {
 
-  private marca:string;
-  private modelo:string;
-  private estaEncendido:boolean;
+  protected marca:string;
+  protected modelo:string;
+  protected estaEncendido:boolean;
 
   constructor(pMarca:string,pModelo:string,pEstaEncendido:boolean) {
     this.marca = pMarca;
@@ -22,23 +22,23 @@ export class Electrodomestico {
     return this.estaEncendido;
   }
 
-  public setMarca(pMarca:string){
+  public setMarca(pMarca:string):void{
     this.marca = pMarca;
   }
 
-  public setModelo(pModelo:string){
+  public setModelo(pModelo:string):void{
     this.modelo = pModelo;
   }
 
-  public encender(){
+  public encender():void{
     this.estaEncendido = true;
   }
 
-  public apagar(){
+  public apagar():void{
     this.estaEncendido = false;
   }
 
-  public mostrarInfo(){
+  public mostrarInfo():void{
     let condicion:string;
     if(this.getEncendido() == true) {
       condicion = "encendido";

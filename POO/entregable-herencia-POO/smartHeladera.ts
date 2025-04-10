@@ -10,11 +10,11 @@ export class SmartHeladera extends Heladera {
     this.moduloWifi = pModulo;
   }
 
-  public conectarInternet(){
+  public conectarInternet():void{
     this.moduloWifi.conectarInternet();
   }
 
-  public mostrarInfo(){
+  public mostrarInfo():void{
     super.mostrarInfo();
     this.moduloWifi.mostrarInfo();
   }
