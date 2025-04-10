@@ -20,11 +20,18 @@ var telefono_1 = require("./telefono");
 var TelefonoConCamara = /** @class */ (function (_super) {
     __extends(TelefonoConCamara, _super);
     function TelefonoConCamara(pMarca, pEstaPrendido, pBateriaActual) {
-        return _super.call(this, pMarca, pEstaPrendido, pBateriaActual) || this;
+        var _this = _super.call(this, pMarca, pEstaPrendido, pBateriaActual) || this;
+        _this.bateriaMinParaFoto = 5;
+        return _this;
     }
     TelefonoConCamara.prototype.sacarFoto = function () {
         if (this.getEstaPrendido()) {
-            console.log("Sonrian.... Click");
+            if (_super.prototype.getBateriaActual.call(this) > this.bateriaMinParaFoto) {
+                console.log("Sonrian.... Click");
+            }
+            else {
+                console.log("No se puede abrir la camara, bateria baja");
+            }
         }
         else {
             console.log("El telefono esta apagado, no se puede sacar una foto");

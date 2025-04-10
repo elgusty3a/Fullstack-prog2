@@ -2,7 +2,9 @@ import { TelefonoConCamara } from "./telefonoConCamara";
 import { TelefonoConRadio } from "./telefonoConRadio";
 
 let motorola:TelefonoConCamara = new TelefonoConCamara("Motorola",false,100);
+let samsung:TelefonoConCamara = new TelefonoConCamara("Motorola",true,5);
 let nokia:TelefonoConRadio = new TelefonoConRadio("Nokia",true,84,97.3);
+samsung.sacarFoto();
 motorola.sacarFoto();
 motorola.hacerLlamada(2983418803);
 motorola.mandarMensaje("Hola, ya estoy yendo")
