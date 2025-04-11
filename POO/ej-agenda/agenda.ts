@@ -34,7 +34,7 @@ export class Agenda {
     this.contactos.push(pContacto);
   }
 
-  public insertarLibros(pContactos:Contacto[]){
+  public insertarContactos(pContactos:Contacto[]){
     pContactos.forEach(contacto => {
       this.insertarContacto(contacto);
     });

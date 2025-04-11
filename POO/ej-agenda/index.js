@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// import { Socio } from "./socio";
+var agenda_1 = require("./agenda");
+var contacto_1 = require("./contacto");
+var personal = new agenda_1.Agenda("Personal");
+var cintia = new contacto_1.Contacto("Cintia", "D'Ferrari", 2983546444, "lamadrid 471");
+var mama = new contacto_1.Contacto("Marisa", "Villanueva", 2983418834, "tierra del fuego 946");
+var tia = new contacto_1.Contacto("edith", "arias", 2983547856, "buchardo 896");
+var primo = new contacto_1.Contacto("matias", "cuervo", 2914597255, "zelarrayan 459");
+var mia = new contacto_1.Contacto("mia", "zurita", 2983415526, "maipu 34");
+var listaContactosBackUp = [cintia, mama, tia, primo, mia];
+personal.insertarContactos(listaContactosBackUp);
+personal.menuAgenda();
