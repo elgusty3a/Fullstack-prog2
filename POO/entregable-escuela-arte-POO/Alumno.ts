@@ -1,5 +1,4 @@
 import { Curso } from "./Curso";
-import { Escuela } from "./Escuela";
 import { Persona } from "./Persona";
 
 export class Alumno extends Persona {
@@ -17,6 +16,17 @@ private curso:Curso;
     return this.nota;
   }
 
-  
+  public setNota(pNota:number){
+    this.nota = pNota;
+  }
+
+  public getCurso():Curso{
+    return this.curso;
+  }
+
+  public setCurso(pAsignatura:Curso):void{
+    this.curso = pAsignatura;
+  }
+
 
 }

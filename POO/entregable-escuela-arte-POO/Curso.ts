@@ -83,8 +83,22 @@ export class Curso{
     }
   }
 
+  public existeProfesor(pProfesor:Profesor){
+    return this.profesor != undefined;
+  }
+
   public existeAlumno(pAlumno:Alumno){
     return this.alumnosDe.includes(pAlumno);
+  }
+
+  public mostrarInfo(): void{
+    console.log(`Nombre del curso: ${this.getAsignatura()}`);
+    if (this.cursoActivo()){
+      console.log(`Profesor: ${this.getProfesor()}`);
+    } else {
+      console.log("El curno no posee profesor aun");
+    }
+    this.getListaAlumnosDe()
   }
 
 

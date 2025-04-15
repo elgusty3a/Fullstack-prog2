@@ -8,7 +8,6 @@ export class Escuela {
   private alumnos:Alumno[];
   private profesores:Profesor[];
   private cursos:Curso[];
-  private asignaNroLegajo:number =+1;
 
   constructor(pNombre:string) {
     this.nombreInstitucion = pNombre;
@@ -85,6 +84,12 @@ export class Escuela {
 
   public existeProfesor(pProfesor:Profesor){
     return this.profesores.includes(pProfesor);
+  }
+
+  public mostrarInfo(): void{
+    console.log(`Nombre de la institución: ${this.getNombreInstitucion()}`);
+    this.getProfesores();
+    this.getListaAlumnos();
   }
 
 
