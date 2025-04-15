@@ -28,5 +28,8 @@ private curso:Curso;
     this.curso = pAsignatura;
   }
 
+  public mostrarInfo(): void{
+    super.mostrarInfo();
+  }
 
 }

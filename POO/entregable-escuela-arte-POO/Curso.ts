@@ -96,7 +96,7 @@ export class Curso{
     if (this.cursoActivo()){
       console.log(`Profesor: ${this.getProfesor()}`);
     } else {
-      console.log("El curno no posee profesor aun");
+      console.log("El curso no posee profesor aun");
     }
     this.getListaAlumnosDe()
   }

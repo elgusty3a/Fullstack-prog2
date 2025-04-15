@@ -33,4 +33,9 @@ export class Persona{
   public setDni(pDni:number) {
     this.dni = pDni;
   }
+
+  public mostrarInfo(): void{
+    console.log(`Apellido y nombre: ${this.getApellido()} ${this.getNombre()} \nDNI: ${this.getDni()} `);
+  }
+
 }

@@ -27,6 +27,8 @@ export class Profesor extends Persona {
     this.salario = pSalario;
   }
 
-
+  public mostrarInfo(): void{
+    super.mostrarInfo();
+  }
 
 }
