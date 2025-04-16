@@ -56,7 +56,7 @@ var Profesor = /** @class */ (function (_super) {
         this.salario = pSalario;
     };
     Profesor.prototype.mostrarInfo = function () {
-        console.log("Titular de: ".concat(this.curso.getAsignatura(), ":"));
+        console.log("\nTitular de: ".concat(this.curso.getAsignatura()));
         _super.prototype.mostrarInfo.call(this);
     };
     return Profesor;

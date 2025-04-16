@@ -8,7 +8,7 @@ export class Curso{
   private asignatura: string;
   private institucion:Escuela;
   private alumnosDe:Alumno[];
-  private profesor:Profesor;
+  private profesor:Profesor | null;
 
   constructor(pAsignatura:string,pInstitucion:Escuela){
     this.asignatura = pAsignatura;
@@ -30,7 +30,7 @@ export class Curso{
     this.institucion = pInstitucion;
   }
 
-  public getProfesor(): Profesor | void{
+  public getProfesor(): Profesor | null | void{
     if(this.cursoActivo()){
       return this.profesor ;
     }else{
@@ -38,7 +38,7 @@ export class Curso{
     }
   }
 
-  public setProfesor(pProfesor:Profesor): void{
+  public setProfesor(pProfesor:Profesor | null): void{
     this.profesor = pProfesor;
   }
 
@@ -60,12 +60,18 @@ export class Curso{
     }
   }
 
+  public despedirProfesor(pProfesor:Profesor){
+    if (this.existeProfesor(pProfesor) && this.cursoCorrecto(pProfesor) && pProfesor == this.profesor) {
+      this.setProfesor(null);
+    }
+  }
+
   public cursoCorrecto(pPersona: Alumno | Profesor):boolean{
     return (this.asignatura == pPersona.getCurso().getAsignatura());
   }
 
   public cursoActivo():boolean{
-    return !(this.profesor === undefined)
+    return !(this.profesor == null)
   }
 
   public getListaAlumnosDe(): void {
@@ -101,7 +107,7 @@ export class Curso{
 
   public mostrarInfo(): void{
     console.log(`Nombre del curso: ${this.asignatura}`);
-    if (this.cursoActivo()) {
+    if (this.profesor != null) {
       this.profesor.mostrarInfo();
     }else{console.log("El curso aun no tiene profesor");}
     this.getListaAlumnosDe()

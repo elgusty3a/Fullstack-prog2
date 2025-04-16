@@ -53,7 +53,7 @@ export class Profesor extends Persona {
   }
 
   public mostrarInfo(): void{
-    console.log(`Titular de: ${this.curso.getAsignatura()}:`);
+    console.log(`\nTitular de: ${this.curso.getAsignatura()}`);
     super.mostrarInfo();
   }
 

@@ -32,15 +32,14 @@ console.log("--------------------------\n--------------------------");
 // pintura.mostrarInfo();
 // console.log("--------------------------\n--------------------------");
 // alfareria.mostrarInfo();
-// console.log("--------------------------\n--------------------------");
 cresta.altaCurso(fotografia);
 cresta.matricularAlumno(frida);
 // cresta.getCursos();
 // fotografia.mostrarInfo();
 var manu = new Profesor_1.Profesor("Manu", "Ela", 29228778, fotografia);
 cresta.contratarProfesor(manu);
-// console.log(fotografia.cursoActivo())
-// console.log(manu.getCurso().getAsignatura())
-// fotografia.mostrarInfo();
-// console.log(fotografia.getProfesor());
+cresta.despedirProfesor(maria);
+pintura.mostrarInfo();
+cresta.bajaCurso(alfareria);
+console.log("--------------------------\n--------------------------");
 cresta.mostrarInfo();
