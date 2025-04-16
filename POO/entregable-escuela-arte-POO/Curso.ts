@@ -49,21 +49,19 @@ export class Curso{
   }
 
   public matricularAlumno(pAlumno:Alumno){
-    if (!this.alumnosDe.includes(pAlumno)) {
-      if (pAlumno.getCurso().getAsignatura() == this.getAsignatura() && !this.existeAlumno(pAlumno)) {
-        this.alumnosDe.push(pAlumno);
-      }
-    }else{
-      console.log(`El alumno ${pAlumno.getNombre()} ${pAlumno.getApellido()} ya está matriculado`);
+    if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
+      this.alumnosDe.push(pAlumno);
     }
   }
 
   public contratarProfesor(pProfesor:Profesor): void{
-    if (!this.cursoActivo() && (this.asignatura == pProfesor.getCurso().getAsignatura())) { //TODO ver por que se repite el clg
+    if (!this.cursoActivo() && this.cursoCorrecto(pProfesor)) {
       this.setProfesor(pProfesor);
-    }else{
-      console.log(`El profesor ${pProfesor.getNombre()} ${pProfesor.getApellido()} ya está matriculado`);
     }
+  }
+
+  public cursoCorrecto(pPersona: Alumno | Profesor):boolean{
+    return (this.asignatura == pPersona.getCurso().getAsignatura());
   }
 
   public cursoActivo():boolean{

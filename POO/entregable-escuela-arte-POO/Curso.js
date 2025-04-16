@@ -37,22 +37,19 @@ var Curso = /** @class */ (function () {
         });
     };
     Curso.prototype.matricularAlumno = function (pAlumno) {
-        if (!this.alumnosDe.includes(pAlumno)) {
-            if (pAlumno.getCurso().getAsignatura() == this.getAsignatura() && !this.existeAlumno(pAlumno)) {
-                this.alumnosDe.push(pAlumno);
-            }
-        }
-        else {
-            console.log("El alumno ".concat(pAlumno.getNombre(), " ").concat(pAlumno.getApellido(), " ya est\u00E1 matriculado"));
+        if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
+            // if (pAlumno.getCurso().getAsignatura() == this.getAsignatura()) {
+            this.alumnosDe.push(pAlumno);
         }
     };
     Curso.prototype.contratarProfesor = function (pProfesor) {
-        if (!this.cursoActivo() && (this.asignatura == pProfesor.getCurso().getAsignatura())) { //TODO ver por que se repite el clg
+        // if (!this.cursoActivo() && (this.asignatura == pProfesor.getCurso().getAsignatura())) { //TODO ver por que se repite el clg
+        if (!this.cursoActivo() && this.cursoCorrecto(pProfesor)) { //TODO ver por que se repite el clg
             this.setProfesor(pProfesor);
         }
-        else {
-            console.log("El profesor ".concat(pProfesor.getNombre(), " ").concat(pProfesor.getApellido(), " ya est\u00E1 matriculado"));
-        }
+    };
+    Curso.prototype.cursoCorrecto = function (pPersona) {
+        return (this.asignatura == pPersona.getCurso().getAsignatura());
     };
     Curso.prototype.cursoActivo = function () {
         return !(this.profesor === undefined);
