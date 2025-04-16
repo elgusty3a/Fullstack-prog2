@@ -30,6 +30,7 @@ private curso:Curso;
 
   public mostrarInfo(): void{
     super.mostrarInfo();
+    console.log(`Cursando: ${this.curso.getAsignatura()}`);
   }
 
 }

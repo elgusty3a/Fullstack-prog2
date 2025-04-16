@@ -27,9 +27,26 @@ export class Escuela {
     console.log(`Alumnos de la institucion:`);
     console.log(`------`);
     for (const alum of this.alumnos) {
-      console.log(`Apellido: ${alum.getApellido()} \nNombre: ${alum.getNombre()}\n`);
+      alum.mostrarInfo();
     }
     console.log(`------`);
+  }
+
+  public matricularAlumnos(pAlumnos:Alumno[]) {
+    pAlumnos.forEach(alumno => {
+      this.matricularAlumno(alumno);
+    });
+  }
+
+  public matricularAlumno(pAlumno:Alumno){
+    if (!this.existeAlumno(pAlumno)) {
+      this.alumnos.push(pAlumno);
+      this.cursos.forEach(curso => {
+          curso.matricularAlumno(pAlumno);
+      });
+    }else{
+      console.log(`El alumno ${pAlumno.getNombre()} ${pAlumno.getApellido()} ya está matriculado`);
+    }
   }
 
   public expulsarAlumno(pAlumno:Alumno) :void{
@@ -53,14 +70,14 @@ export class Escuela {
     });
   }
 
-  public contratarProfesor(pProfesor:Profesor){
+  public contratarProfesor(pProfesor:Profesor): void{
     if (!this.existeProfesor(pProfesor)){
       this.profesores.push(pProfesor);
       this.cursos.forEach(curso => {
-        if (!curso.cursoActivo() && pProfesor.getCurso().getAsignatura() == curso.getAsignatura()) {
-          curso.setProfesor(pProfesor)
-        };
+        curso.contratarProfesor(pProfesor);
       });
+    }else{
+      console.log(`El profesor ${pProfesor.getNombre()} ${pProfesor.getApellido()} ya pertenece a la institucion`);
     }
   }
 
@@ -69,7 +86,7 @@ export class Escuela {
       let indice:number = this.profesores.indexOf(pProfesor);
       this.profesores.splice(indice,1);
     }else{
-      console.log(`El maestro ${pProfesor.getNombre()} ${pProfesor.getApellido()} no pertenece a la institucion`);
+      console.log(`El profesor ${pProfesor.getNombre()} ${pProfesor.getApellido()} no pertenece a la institucion`);
     }
   }
 
@@ -77,7 +94,7 @@ export class Escuela {
     console.log(`Profesores de la institucion:`);
     console.log(`------`);
     for (const profe of this.profesores) {
-      console.log(`Apellido: ${profe.getApellido()} \nNombre: ${profe.getNombre()} \nAsignatura: ${profe.getCurso().getAsignatura()}\n`);
+      profe.mostrarInfo();
     }
     console.log(`------`);
   }
@@ -86,8 +103,37 @@ export class Escuela {
     return this.profesores.includes(pProfesor);
   }
 
+  public getCursos(): void{
+    console.log(`Cursos disponibles:`);
+    console.log(`------`);
+    for (const curso of this.cursos) {
+      console.log(`Curso: ${curso.getAsignatura()} \n`);
+    }
+    console.log(`------`);
+  }
+
+  public altaCurso(pCurso:Curso){
+    if (!this.existeCurso(pCurso)){
+      this.cursos.push(pCurso);
+    }
+  }
+
+  public bajaCurso(pCurso:Curso): void{
+    if (this.existeCurso(pCurso)) {
+      let indice:number = this.cursos.indexOf(pCurso);
+      this.cursos.splice(indice,1);
+    }else{
+      console.log(`El curso ${pCurso.getAsignatura()} no existe`);
+    }
+  }
+
+  public existeCurso(pCurso:Curso): boolean{
+    return (this.cursos.includes(pCurso))
+  }
+
   public mostrarInfo(): void{
-    console.log(`Nombre de la institución: ${this.getNombreInstitucion()}`);
+    console.log(`Nombre de la institución: ${this.nombreInstitucion}`);
+    this.getCursos();
     this.getProfesores();
     this.getListaAlumnos();
   }

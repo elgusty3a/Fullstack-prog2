@@ -1,12 +1,12 @@
 export class Persona{
 
-  private apellido:string;
   private nombre:string;
+  private apellido:string;
   private dni:number;
 
-  constructor(pApellido:string,pNombre:string,pDni:number) {
-    this.apellido = pApellido;
+  constructor(pNombre:string,pApellido:string,pDni:number) {
     this.nombre = pNombre;
+    this.apellido = pApellido;
     this.dni = pDni;
   }
 
@@ -35,7 +35,7 @@ export class Persona{
   }
 
   public mostrarInfo(): void{
-    console.log(`Apellido y nombre: ${this.getApellido()} ${this.getNombre()} \nDNI: ${this.getDni()} `);
+    console.log(`\nApellido y nombre: ${this.getApellido()} ${this.getNombre()} \nDNI: ${this.getDni()}`);
   }
 
 }

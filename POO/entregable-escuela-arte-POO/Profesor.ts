@@ -6,9 +6,34 @@ export class Profesor extends Persona {
   private curso:Curso;
   private salario:number;
 
-  constructor(pApellido:string,pNombre:string,pDni:number,pAsignatura:Curso) {
+  constructor(pApellido:string,pNombre:string,pDni:number,pCurso:Curso) {
     super(pApellido,pNombre,pDni);
-    this.curso = pAsignatura;
+    this.curso = pCurso;
+    this.salario = 0;
+  }
+
+  public getApellido() {
+    return super.getApellido();
+  }
+
+  public setApellido(pApellido:string) {
+    super.setApellido(pApellido);
+  }
+
+  public getNombre() {
+    return super.getNombre();
+  }
+
+  public setNombre(pNombre:string) {
+    super.setNombre(pNombre);
+  }
+
+  public getDni() {
+    return super.getDni();
+  }
+
+  public setDni(pDni:number) {
+    super.setDni(pDni);
   }
 
   public getCurso():Curso{
@@ -28,6 +53,7 @@ export class Profesor extends Persona {
   }
 
   public mostrarInfo(): void{
+    console.log(`Titular de: ${this.curso.getAsignatura()}:`);
     super.mostrarInfo();
   }
 

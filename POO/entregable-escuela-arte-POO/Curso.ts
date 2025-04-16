@@ -1,3 +1,4 @@
+import { isDeepStrictEqual } from "util";
 import { Alumno } from "./Alumno";
 import { Escuela } from "./Escuela";
 import { Profesor } from "./Profesor";
@@ -7,13 +8,12 @@ export class Curso{
   private asignatura: string;
   private institucion:Escuela;
   private alumnosDe:Alumno[];
-  private profesor:Profesor | undefined;
+  private profesor:Profesor;
 
-  constructor(pAsignatura:string,pInstitucion:Escuela,pProfesor?:Profesor){
+  constructor(pAsignatura:string,pInstitucion:Escuela){
     this.asignatura = pAsignatura;
     this.institucion = pInstitucion;
     this.alumnosDe = new Array();
-    this.profesor = pProfesor?? undefined;
   }
 
   public getAsignatura(): string {
@@ -50,21 +50,31 @@ export class Curso{
 
   public matricularAlumno(pAlumno:Alumno){
     if (!this.alumnosDe.includes(pAlumno)) {
-      this.alumnosDe.push(pAlumno);
+      if (pAlumno.getCurso().getAsignatura() == this.getAsignatura() && !this.existeAlumno(pAlumno)) {
+        this.alumnosDe.push(pAlumno);
+      }
     }else{
       console.log(`El alumno ${pAlumno.getNombre()} ${pAlumno.getApellido()} ya está matriculado`);
     }
   }
 
-  public cursoActivo():boolean{
-    return (this.profesor != undefined)
+  public contratarProfesor(pProfesor:Profesor): void{
+    if (!this.cursoActivo() && (this.asignatura == pProfesor.getCurso().getAsignatura())) { //TODO ver por que se repite el clg
+      this.setProfesor(pProfesor);
+    }else{
+      console.log(`El profesor ${pProfesor.getNombre()} ${pProfesor.getApellido()} ya está matriculado`);
+    }
   }
 
-  public getListaAlumnosDe() {
-    console.log(`Alumnos de ${this.getAsignatura()}:`);
+  public cursoActivo():boolean{
+    return !(this.profesor === undefined)
+  }
+
+  public getListaAlumnosDe(): void {
+    console.log(`\nAlumnos de ${this.getAsignatura()}:`);
     console.log(`------`);
     for (const alum of this.alumnosDe) {
-      console.log(`Apellido: ${alum.getApellido()} \nNombre: ${alum.getNombre()} \n`);
+      alum.mostrarInfo();
     }
     console.log(`------`);
   }
@@ -84,7 +94,7 @@ export class Curso{
   }
 
   public existeProfesor(pProfesor:Profesor){
-    return this.profesor != undefined;
+    return (this.profesor == pProfesor);
   }
 
   public existeAlumno(pAlumno:Alumno){
@@ -92,12 +102,10 @@ export class Curso{
   }
 
   public mostrarInfo(): void{
-    console.log(`Nombre del curso: ${this.getAsignatura()}`);
-    if (this.cursoActivo()){
-      console.log(`Profesor: ${this.getProfesor()}`);
-    } else {
-      console.log("El curso no posee profesor aun");
-    }
+    console.log(`Nombre del curso: ${this.asignatura}`);
+    if (this.cursoActivo()) {
+      this.profesor.mostrarInfo();
+    }else{console.log("El curso aun no tiene profesor");}
     this.getListaAlumnosDe()
   }
 
