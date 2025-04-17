@@ -23,6 +23,10 @@ export class Escuela {
     this.nombreInstitucion = pNombre;
   }
 
+  //--------------------------------------------------
+  //------------------ ALUMNOS -----------------------
+  //--------------------------------------------------
+
   public getListaAlumnos() :void{
     console.log(`Alumnos de la institucion:`);
     console.log(`------`);
@@ -63,7 +67,9 @@ export class Escuela {
     return this.alumnos.includes(pAlumno);
   }
 
-  //------------------ Profesores
+  //--------------------------------------------------
+  //------------------ PROFESORES --------------------
+  //--------------------------------------------------
   public contratarProfesores(pProfesor:Profesor[]) :void{
     pProfesor.forEach(maestro => {
       this.contratarProfesor(maestro);
@@ -103,6 +109,9 @@ export class Escuela {
     return this.profesores.includes(pProfesor);
   }
 
+  //--------------------------------------------------
+  //------------------ CURSOS ------------------------
+  //--------------------------------------------------
   public getCursos(): void{
     console.log(`Cursos disponibles:`);
     console.log(`------`);
@@ -131,6 +140,10 @@ export class Escuela {
     return (this.cursos.includes(pCurso))
   }
 
+
+  //--------------------------------------------------
+  //------------------ INFO --------------------------
+  //--------------------------------------------------
   public mostrarInfo(): void{
     console.log(`Nombre de la institución: ${this.nombreInstitucion}`);
     this.getCursos();

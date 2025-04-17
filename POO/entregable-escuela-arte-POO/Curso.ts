@@ -30,6 +30,15 @@ export class Curso{
     this.institucion = pInstitucion;
   }
 
+  // Se fija si el profesor o el alumno que se quiere dar de alta esta en el curso correcto
+  public cursoCorrecto(pPersona: Alumno | Profesor):boolean{
+    return (this.asignatura == pPersona.getCurso().getAsignatura());
+  }
+
+  //--------------------------------------------------
+  //------------------ ALUMNOS -----------------------
+  //--------------------------------------------------
+
   public getProfesor(): Profesor | null | void{
     if(this.cursoActivo()){
       return this.profesor ;
@@ -40,18 +49,6 @@ export class Curso{
 
   public setProfesor(pProfesor:Profesor | null): void{
     this.profesor = pProfesor;
-  }
-
-  public matricularAlumnos(pAlumnos:Alumno[]) {
-    pAlumnos.forEach(alumno => {
-      this.matricularAlumno(alumno);
-    });
-  }
-
-  public matricularAlumno(pAlumno:Alumno){
-    if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
-      this.alumnosDe.push(pAlumno);
-    }
   }
 
   public contratarProfesor(pProfesor:Profesor): void{
@@ -66,12 +63,28 @@ export class Curso{
     }
   }
 
-  public cursoCorrecto(pPersona: Alumno | Profesor):boolean{
-    return (this.asignatura == pPersona.getCurso().getAsignatura());
+  public existeProfesor(pProfesor:Profesor){
+    return (this.profesor == pProfesor);
   }
 
   public cursoActivo():boolean{
     return !(this.profesor == null)
+  }
+
+  //--------------------------------------------------
+  //------------------ ALUMNOS -----------------------
+  //--------------------------------------------------
+
+  public matricularAlumnos(pAlumnos:Alumno[]) {
+    pAlumnos.forEach(alumno => {
+      this.matricularAlumno(alumno);
+    });
+  }
+
+  public matricularAlumno(pAlumno:Alumno){
+    if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
+      this.alumnosDe.push(pAlumno);
+    }
   }
 
   public getListaAlumnosDe(): void {
@@ -97,13 +110,13 @@ export class Curso{
     }
   }
 
-  public existeProfesor(pProfesor:Profesor){
-    return (this.profesor == pProfesor);
-  }
-
   public existeAlumno(pAlumno:Alumno){
     return this.alumnosDe.includes(pAlumno);
   }
+
+  //--------------------------------------------------
+  //------------------ INFO --------------------------
+  //--------------------------------------------------
 
   public mostrarInfo(): void{
     console.log(`Nombre del curso: ${this.asignatura}`);
