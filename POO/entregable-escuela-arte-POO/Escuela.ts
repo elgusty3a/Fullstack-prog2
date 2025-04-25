@@ -91,6 +91,9 @@ export class Escuela {
     if (this.existeProfesor(pProfesor)) {
       let indice:number = this.profesores.indexOf(pProfesor);
       this.profesores.splice(indice,1);
+      this.cursos.forEach(curso => {
+        curso.despedirProfesor(pProfesor);
+      });
     }else{
       console.log(`El profesor ${pProfesor.getNombre()} ${pProfesor.getApellido()} no pertenece a la institucion`);
     }

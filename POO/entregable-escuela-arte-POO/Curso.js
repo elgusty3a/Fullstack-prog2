@@ -19,6 +19,13 @@ var Curso = /** @class */ (function () {
     Curso.prototype.setInstitucion = function (pInstitucion) {
         this.institucion = pInstitucion;
     };
+    // Se fija si el profesor o el alumno que se quiere dar de alta esta en el curso correcto
+    Curso.prototype.cursoCorrecto = function (pPersona) {
+        return (this.asignatura == pPersona.getCurso().getAsignatura());
+    };
+    //--------------------------------------------------
+    //------------------ PROFESORES --------------------
+    //--------------------------------------------------
     Curso.prototype.getProfesor = function () {
         if (this.cursoActivo()) {
             return this.profesor;
@@ -30,17 +37,6 @@ var Curso = /** @class */ (function () {
     Curso.prototype.setProfesor = function (pProfesor) {
         this.profesor = pProfesor;
     };
-    Curso.prototype.matricularAlumnos = function (pAlumnos) {
-        var _this = this;
-        pAlumnos.forEach(function (alumno) {
-            _this.matricularAlumno(alumno);
-        });
-    };
-    Curso.prototype.matricularAlumno = function (pAlumno) {
-        if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
-            this.alumnosDe.push(pAlumno);
-        }
-    };
     Curso.prototype.contratarProfesor = function (pProfesor) {
         if (!this.cursoActivo() && this.cursoCorrecto(pProfesor)) {
             this.setProfesor(pProfesor);
@@ -51,11 +47,25 @@ var Curso = /** @class */ (function () {
             this.setProfesor(null);
         }
     };
-    Curso.prototype.cursoCorrecto = function (pPersona) {
-        return (this.asignatura == pPersona.getCurso().getAsignatura());
+    Curso.prototype.existeProfesor = function (pProfesor) {
+        return (this.profesor == pProfesor);
     };
     Curso.prototype.cursoActivo = function () {
         return !(this.profesor == null);
+    };
+    //--------------------------------------------------
+    //------------------ ALUMNOS -----------------------
+    //--------------------------------------------------
+    Curso.prototype.matricularAlumnos = function (pAlumnos) {
+        var _this = this;
+        pAlumnos.forEach(function (alumno) {
+            _this.matricularAlumno(alumno);
+        });
+    };
+    Curso.prototype.matricularAlumno = function (pAlumno) {
+        if (!this.existeAlumno(pAlumno) && this.cursoCorrecto(pAlumno)) {
+            this.alumnosDe.push(pAlumno);
+        }
     };
     Curso.prototype.getListaAlumnosDe = function () {
         console.log("\nAlumnos de ".concat(this.getAsignatura(), ":"));
@@ -78,12 +88,12 @@ var Curso = /** @class */ (function () {
             this.alumnosDe.splice(indice, 1);
         }
     };
-    Curso.prototype.existeProfesor = function (pProfesor) {
-        return (this.profesor == pProfesor);
-    };
     Curso.prototype.existeAlumno = function (pAlumno) {
         return this.alumnosDe.includes(pAlumno);
     };
+    //--------------------------------------------------
+    //------------------ INFO --------------------------
+    //--------------------------------------------------
     Curso.prototype.mostrarInfo = function () {
         console.log("Nombre del curso: ".concat(this.asignatura));
         if (this.profesor != null) {

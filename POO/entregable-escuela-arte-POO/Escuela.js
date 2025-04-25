@@ -14,6 +14,9 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.setNombreInstitucion = function (pNombre) {
         this.nombreInstitucion = pNombre;
     };
+    //--------------------------------------------------
+    //------------------ ALUMNOS -----------------------
+    //--------------------------------------------------
     Escuela.prototype.getListaAlumnos = function () {
         console.log("Alumnos de la institucion:");
         console.log("------");
@@ -52,7 +55,9 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.existeAlumno = function (pAlumno) {
         return this.alumnos.includes(pAlumno);
     };
-    //------------------ Profesores
+    //--------------------------------------------------
+    //------------------ PROFESORES --------------------
+    //--------------------------------------------------
     Escuela.prototype.contratarProfesores = function (pProfesor) {
         var _this = this;
         pProfesor.forEach(function (maestro) {
@@ -74,6 +79,9 @@ var Escuela = /** @class */ (function () {
         if (this.existeProfesor(pProfesor)) {
             var indice = this.profesores.indexOf(pProfesor);
             this.profesores.splice(indice, 1);
+            this.cursos.forEach(function (curso) {
+                curso.despedirProfesor(pProfesor);
+            });
         }
         else {
             console.log("El profesor ".concat(pProfesor.getNombre(), " ").concat(pProfesor.getApellido(), " no pertenece a la institucion"));
@@ -91,6 +99,9 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.existeProfesor = function (pProfesor) {
         return this.profesores.includes(pProfesor);
     };
+    //--------------------------------------------------
+    //------------------ CURSOS ------------------------
+    //--------------------------------------------------
     Escuela.prototype.getCursos = function () {
         console.log("Cursos disponibles:");
         console.log("------");
@@ -117,6 +128,9 @@ var Escuela = /** @class */ (function () {
     Escuela.prototype.existeCurso = function (pCurso) {
         return (this.cursos.includes(pCurso));
     };
+    //--------------------------------------------------
+    //------------------ INFO --------------------------
+    //--------------------------------------------------
     Escuela.prototype.mostrarInfo = function () {
         console.log("Nombre de la instituci\u00F3n: ".concat(this.nombreInstitucion));
         this.getCursos();

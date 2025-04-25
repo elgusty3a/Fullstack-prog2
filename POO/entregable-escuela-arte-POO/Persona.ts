@@ -1,8 +1,8 @@
 export class Persona{
 
-  private nombre:string;
-  private apellido:string;
-  private dni:number;
+  protected nombre:string;
+  protected apellido:string;
+  protected dni:number;
 
   constructor(pNombre:string,pApellido:string,pDni:number) {
     this.nombre = pNombre;
