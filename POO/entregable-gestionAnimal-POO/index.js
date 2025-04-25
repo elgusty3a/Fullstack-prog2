@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Perro_1 = require("./Perro");
+var Gato_1 = require("./Gato");
+var mimu = new Gato_1.Gato("Mimu");
+var chizzo = new Perro_1.Perro("Chizzo");
+mimu.moverse();
+mimu.emitirSonido();
+mimu.tipoDeDieta();
+console.log("---------------------------------------");
+chizzo.moverse();
+chizzo.emitirSonido();
+chizzo.tipoDeDieta();
