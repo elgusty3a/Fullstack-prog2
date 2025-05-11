@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var AnimalFactory_1 = require("./AnimalFactory");
+var fabricaAnimales = new AnimalFactory_1.AnimalFactory();
+var chizzo = fabricaAnimales.crearAnimal("perro", { nombre: "Chizzo", raza: "Callejero" });
+console.log(chizzo.toString());
+var arya = fabricaAnimales.crearAnimal("gato", { nombre: "Arya", raza: "carey" });
+console.log(arya.toString());
+var limon = fabricaAnimales.crearAnimal("pajaro", { nombre: "Limon", raza: "canario" });
+console.log(limon.toString());
+var ferdinand = fabricaAnimales.crearAnimal("toro", { nombre: "Ferdinand", raza: "hereford" });
+console.log(ferdinand.toString());
